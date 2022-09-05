@@ -1,0 +1,31 @@
+ #Documentation: https://docs.oracle.com/en/java/javase/12/docs/api/java.base/java/util/Collection.html
+ Kolekcja to nic innego jak sposób grupowania obiektów.
+ W przypadku frameworku kolekcji głównymi problemami, które rozwiązują jego komponenty są:
+    - przechowywanie obiektów (dodawanie, usuwanie)
+    - wyszukiwanie obiektów
+    - przeglądanie obiektów
+
+W ramach frameworku kolekcji istnieje interfejs Collection, który jest rozszerzany przez interfejsy takie jak List, Set, Queue, Deque.
+Map nie jest kolekcją. Innymi słowy interfejs Map nie rozszerza interfejsu Collection".
+
+#Lista (ang. list) podobnie jak tablica, grupuje elementy.
+    Jej główną przewagą nad tablicą jest to, że programista nie musi się przejmować rozmiarem listy,
+    jest ona automatycznie powiększana wraz z dodawaniem nowych elementów.
+Reprezentowane są przez interfejs java.util.List
+Podstawowymi przykładami implementacji interfejsu java.util.List są klasy java.util.LinkedList oraz java.util.ArrayList.
+
+    @LinkedList lepiej jest używać jeśli często usuwasz elementy z listy.
+        List<Integer> numbers = new LinkedList<>();
+
+    @ArrayList lepiej jest używać jeśli często chcesz mieć dostęp do losowych elementów w liście.
+        List<String> names = new ArrayList<>();
+
+Załóżmy, że nasza zmienna jest typu List<String>. Wówczas będziesz mógł używać m.in. następujących metod:
+
+add – dodaje element do listy,
+addAll – jako parametr przyjmuje inną kolekcję i dodaje wszystkie elementy z tej kolekcji do listy,
+contains – jako parametr przyjmuje element listy i zwraca flagę informującą czy dany element już istnieje (tutaj przyda Ci się artykuł o porównywaniu obiektów w języku Java),
+isEmpty – bezargumentowa metoda zwracająca flagę informującą czy lista jest pusta,
+size – bezargumentowa metoda zwracająca liczbę elementów w liście,
+indexOf – metoda jako parametr przyjmuje element listy i zwraca indeks pierwszego wystąpienia,
+lastIndexOf – metoda jako parametr przyjmuje element listy i zwraca indeks ostatniego wystąpienia.

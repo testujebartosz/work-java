@@ -1,0 +1,38 @@
+Employee class:
+
+public static Employee createNewTeamLeader(String name, String surname, int age, ArrayList<Employee> subjectDevs){
+        Employee employee = new Employee();
+        employee.name = name;
+        employee.surname = surname;
+        employee.age = age;
+        employee.subjectDevs = subjectDevs;
+        employee.position = new Position(PositionNameEnum.TL);
+        subjectDevs.forEach(subjectDev->subjectDev.setTeamLeader(employee));
+        return employee;
+}
+
+public List<Employee> getSubjectDevs(){
+        return this.subjectDevs;
+}
+
+public String getNameLeader(){
+          return teamLeader.name;
+}
+
+public String toString(){
+   return "lider: " + this.getNameLeader() + ", imię: " + this.name + ", nazwisko: " + this.surname + ", wiek: " + this.age + ", stanowisko: " + this.position.getName() + ", wynagrodzenie netto: " + this.salary.getNetSalary();
+}
+
+Position class:
+  public PositionNameEnum getName(){
+        return this.name;
+    }
+
+Salary class:
+ public double getNetSalary(){
+        return this.netSalary;
+    }
+
+Main class:
+teamLeader.getSubjectDevs().forEach(dev-> System.out.println(dev.toString()));
+teamLeaderSecond.getSubjectDevs().forEach(dev-> System.out.println(dev.toString()));

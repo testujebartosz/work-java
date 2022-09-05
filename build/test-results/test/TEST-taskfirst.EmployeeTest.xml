@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="taskfirst.EmployeeTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-08-15T08:05:31" hostname="Bartoszs-MBP.lan" time="0.053">
+  <properties/>
+  <testcase name="checkIfDevHasCorrectData()" classname="taskfirst.EmployeeTest" time="0.053"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
