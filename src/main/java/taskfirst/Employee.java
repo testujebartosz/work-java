@@ -3,8 +3,8 @@ package taskfirst;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.time.LocalDate;
+import java.util.*;
 
 @Setter
 @Getter
@@ -18,7 +18,7 @@ public class Employee {
     private Set<Employee> subjectDevs = new HashSet<>();
     private Employee teamLeader;
     private Salary salary;
-
+    private static Map<LocalDate, List<Employee>> oooMap = new HashMap<>();
     public Employee(){
 
     }
@@ -59,7 +59,15 @@ public class Employee {
 //    public void setTeamLeader(Employee teamLeader){
 //        this.teamLeader = teamLeader;
 //    }
-
+    public static void addEmployeeToVacationCalendar(LocalDate when, Employee who) {
+        List<Employee> employees = oooMap.get(when);
+        if (employees == null) {
+            employees = new ArrayList<>();
+            oooMap.put(when, employees);
+        }
+        employees.add(who);
+        System.out.println(oooMap);
+    }
     // to String pisemna reprezentacja obiektu - służy do zwracania tekstowej, czytelnej dla człowieka reprezentacji obiektu.
     @Override
     public String toString() {

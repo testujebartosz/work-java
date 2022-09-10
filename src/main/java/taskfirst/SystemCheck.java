@@ -3,6 +3,8 @@ package taskfirst;
 import java.time.LocalDate;
 import java.util.*;
 
+import static taskfirst.Employee.addEmployeeToVacationCalendar;
+
 public class SystemCheck {
     public static void main(String[] args) {
 
@@ -36,16 +38,21 @@ public class SystemCheck {
         System.out.println(teamLeader.getSubjectDevs());
         //System.out.println(firstDev);
 
+        LocalDate dateFirst = LocalDate.of(2022, 6, 29);
+        addEmployeeToVacationCalendar(dateFirst, firstDev);
+        addEmployeeToVacationCalendar(dateFirst, secondDev);
+        LocalDate dateSecond = LocalDate.of(2022, 8, 22);
+        addEmployeeToVacationCalendar(dateSecond, thirdDev);
 
-        Map<LocalDate, List<Employee>> oooMap = new HashMap<>();
+        Map<LocalDate, List<Employee>> oooMap1 = new HashMap<>();
         /// LocalDate.of(2022, 6, 29)
-        LocalDate when = LocalDate.of(2022, 6, 29);
+        LocalDate when = LocalDate.of(2022, 6, 30);
         Employee who = firstDev;
 
-        List<Employee> employees = oooMap.get(when);
+        List<Employee> employees = oooMap1.get(when);
         if (employees == null) {
             employees = new ArrayList<>();
-            oooMap.put(when, employees);
+            oooMap1.put(when, employees);
         }
         employees.add(who);
 
@@ -53,24 +60,12 @@ public class SystemCheck {
         when = LocalDate.of(2022, 6, 29);
         who = secondDev;
 
-        employees = oooMap.get(when);
+        employees = oooMap1.get(when);
         if (employees == null) {
             employees = new ArrayList<>();
-            oooMap.put(when, employees);
+            oooMap1.put(when, employees);
         }
         employees.add(who);
-
-        when = LocalDate.of(2022, 8, 04);
-        who = thirdDev;
-
-        employees = oooMap.get(when);
-        if (employees == null) {
-            employees = new ArrayList<>();
-            oooMap.put(when, employees);
-        }
-        employees.add(who);
-
-        System.out.println(oooMap);
-
+       System.out.println(oooMap1);
     }
 }
