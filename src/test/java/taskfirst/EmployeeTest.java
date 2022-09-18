@@ -1,10 +1,15 @@
 package taskfirst;
 
+import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.Test;
+
+import java.time.LocalDate;
 import java.util.HashSet;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
+import static taskfirst.Employee.addEmployeeToVacationCalendar;
+import static taskfirst.Employee.getOooMap;
 
 class EmployeeTest {
 
@@ -14,7 +19,7 @@ class EmployeeTest {
         //given
         var devFirst = new Employee();
         var devSecond = new Employee();
-        var teamLeader= new Employee();
+        var teamLeader = new Employee();
 
         //then
         devFirst.createNewDev("Bartek", "Jarek", 33);
@@ -38,8 +43,8 @@ class EmployeeTest {
         teamLeader.calculateSalary(160, 60);
 
         //when
-        assertEquals(6400,dev.getSalary().getNetSalary());
-        assertEquals(9600,teamLeader.getSalary().getNetSalary());
+        assertEquals(6400, dev.getSalary().getNetSalary());
+        assertEquals(9600, teamLeader.getSalary().getNetSalary());
     }
 
     @Test
@@ -77,13 +82,39 @@ class EmployeeTest {
         //when
         assertThat(dev).satisfies(devData -> {
             assertThat(devData.getName()).isNotNull()
-                                         .isEqualTo("Bartek");
+                    .isEqualTo("Bartek");
             assertThat(devData.getSalary().getNetSalary()).isEqualTo(5000);
             assertThat(devData.getSurname()).isNotEmpty()
-                                            .hasSize(8);
+                    .hasSize(8);
             assertThat(devData.getAge()).isLessThan(50);
 
         });
+    }
+    @Test
+    public void checkIfEmployeeWasAddedToVacationCalendar() {
+        //given
+        Employee firstDev = new Employee();
+        firstDev.createNewDev("Kamil", "Kowalski", 33);
+
+        Employee secondDev = new Employee();
+        secondDev.createNewDev("Adam", "Wielki", 55);
+
+        Employee teamLeader = new Employee();
+        teamLeader.createNewTeamLeader("Bartek", "Wojtek", 55, new HashSet<>());
+
+        //then
+        LocalDate dateFirst = LocalDate.of(2022, 6, 29);
+        LocalDate dateSecond = LocalDate.of(2022, 7, 28);
+        addEmployeeToVacationCalendar(dateFirst, firstDev);
+        addEmployeeToVacationCalendar(dateFirst, secondDev);
+        addEmployeeToVacationCalendar(dateSecond, teamLeader);
+
+        //when
+        SoftAssertions softly = new SoftAssertions();
+        softly.assertThat(getOooMap().get(dateFirst)).contains(firstDev);
+        softly.assertThat(getOooMap().get(dateFirst)).contains(secondDev);
+        softly.assertThat(getOooMap().get(dateSecond)).contains(teamLeader);
+        softly.assertAll();
     }
 
 }

@@ -59,6 +59,10 @@ public class Employee {
 //    public void setTeamLeader(Employee teamLeader){
 //        this.teamLeader = teamLeader;
 //    }
+
+    public static Map<LocalDate, List<Employee>> getOooMap() {
+        return oooMap;
+    }
     public static void addEmployeeToVacationCalendar(LocalDate when, Employee who) {
         List<Employee> employees = oooMap.get(when);
         if (employees == null) {
@@ -66,7 +70,7 @@ public class Employee {
             oooMap.put(when, employees);
         }
         employees.add(who);
-        System.out.println(oooMap);
+
     }
     // to String pisemna reprezentacja obiektu - służy do zwracania tekstowej, czytelnej dla człowieka reprezentacji obiektu.
     @Override

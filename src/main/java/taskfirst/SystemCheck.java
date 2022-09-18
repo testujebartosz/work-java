@@ -36,36 +36,12 @@ public class SystemCheck {
         teamLeaderSecond.addDev(firstDev);
 
         System.out.println(teamLeader.getSubjectDevs());
-        //System.out.println(firstDev);
 
         LocalDate dateFirst = LocalDate.of(2022, 6, 29);
         addEmployeeToVacationCalendar(dateFirst, firstDev);
         addEmployeeToVacationCalendar(dateFirst, secondDev);
         LocalDate dateSecond = LocalDate.of(2022, 8, 22);
         addEmployeeToVacationCalendar(dateSecond, thirdDev);
-
-        Map<LocalDate, List<Employee>> oooMap1 = new HashMap<>();
-        /// LocalDate.of(2022, 6, 29)
-        LocalDate when = LocalDate.of(2022, 6, 30);
-        Employee who = firstDev;
-
-        List<Employee> employees = oooMap1.get(when);
-        if (employees == null) {
-            employees = new ArrayList<>();
-            oooMap1.put(when, employees);
-        }
-        employees.add(who);
-
-        /// LocalDate.of(2022, 6, 29)
-        when = LocalDate.of(2022, 6, 29);
-        who = secondDev;
-
-        employees = oooMap1.get(when);
-        if (employees == null) {
-            employees = new ArrayList<>();
-            oooMap1.put(when, employees);
-        }
-        employees.add(who);
-       System.out.println(oooMap1);
+        System.out.println(Employee.getOooMap());
     }
 }
